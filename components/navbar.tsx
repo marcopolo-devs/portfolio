@@ -15,7 +15,6 @@ export default function Navbar({ onMenuClick, isSidebarOpen }: NavbarProps) {
   const [isHidden, setIsHidden] = useState(false)
   const [scrollDirection, setScrollDirection] = useState("up")
   const [lastScrollY, setLastScrollY] = useState(0)
-  const [isLeftEdgeHovered, setIsLeftEdgeHovered] = useState(false)
 
   const router = useRouter()
   const pathname = usePathname()
@@ -42,25 +41,6 @@ export default function Navbar({ onMenuClick, isSidebarOpen }: NavbarProps) {
     })
     return unsubscribe
   }, [scrollY, lastScrollY])
-
-  // Handle left edge hover for sidebar trigger
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Trigger sidebar when mouse is within 50px of left edge
-      if (e.clientX <= 50 && window.innerWidth >= 1024) {
-        // Only on large screens
-        if (!isLeftEdgeHovered) {
-          setIsLeftEdgeHovered(true)
-          onMenuClick()
-        }
-      } else {
-        setIsLeftEdgeHovered(false)
-      }
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [isLeftEdgeHovered, onMenuClick])
 
   // Navigation handlers
   const handleNavigation = (target: string) => {
@@ -135,21 +115,24 @@ export default function Navbar({ onMenuClick, isSidebarOpen }: NavbarProps) {
                 <div className="flex items-center space-x-8">
                   <button
                     onClick={() => handleNavigation("about")}
-                    className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform"
+                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform group"
                   >
                     About
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 ease-out"></span>
                   </button>
                   <button
                     onClick={() => handleNavigation("services")}
-                    className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform"
+                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform group"
                   >
                     Services
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 ease-out"></span>
                   </button>
                   <button
                     onClick={() => handleNavigation("work")}
-                    className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform"
+                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform group"
                   >
                     Work
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 ease-out"></span>
                   </button>
                 </div>
 
@@ -157,7 +140,7 @@ export default function Navbar({ onMenuClick, isSidebarOpen }: NavbarProps) {
                 <div className="flex items-center">
                   <Button
                     onClick={handleContactClick}
-                    className="bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-full px-6 py-2 font-medium backdrop-blur-sm transition-all hover:scale-105"
+                    className="bg-white/20 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 text-white border border-white/30 hover:border-transparent rounded-full px-6 py-2 font-medium backdrop-blur-sm transition-all hover:scale-105 duration-300"
                   >
                     Contact
                     <ChevronRight className="w-4 h-4 ml-1" />

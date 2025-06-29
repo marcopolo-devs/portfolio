@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Sphere, MeshDistortMaterial, Float } from "@react-three/drei"
 import Navbar from "@/components/navbar"
 import Sidebar from "@/components/sidebar"
@@ -40,6 +40,22 @@ function ParticleField() {
 
 export default function MarcoPoloDigital() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  // Handle left edge hover for sidebar trigger (desktop only)
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Only trigger on desktop (large screens)
+      if (window.innerWidth < 1024) return
+
+      // Trigger sidebar when mouse is within 50px of left edge
+      if (e.clientX <= 50 && !isSidebarOpen) {
+        setIsSidebarOpen(true)
+      }
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [isSidebarOpen])
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">

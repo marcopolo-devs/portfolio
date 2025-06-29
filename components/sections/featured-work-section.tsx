@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Play, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Folder from "../ui/Folder"
 
 export default function FeaturedWorkSection() {
   const featuredProjects = [
@@ -88,13 +89,13 @@ export default function FeaturedWorkSection() {
           className="text-center"
         >
           <Link href="/works">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full group"
-            >
-              View All Work
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+
+              
+              <div className="w-full pt-6">
+                    <Folder size={1.5} color="#B95FC1" className="custom-folder mx-auto w-fit" />
+                  
+              </div>
+              
           </Link>
         </motion.div>
       </div>

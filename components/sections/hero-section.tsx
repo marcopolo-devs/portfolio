@@ -55,29 +55,35 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 0.5 }}
       >
         <motion.h1
-          className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent"
           initial={{ scale: 0.8 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1, delay: 0.7 }}
         >
-          Charting Your Brand's
+          From Sparks
           <br />
-          Digital Frontier
+          to Supernovas
         </motion.h1>
         <motion.p
-          className="text-xl md:text-2xl mb-8 text-gray-300"
+          className="text-lg md:text-xl lg:text-2xl mb-12 text-gray-300 max-w-4xl mx-auto leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          We navigate the digital landscape to transform your vision into extraordinary experiences
+          We Don't Just Build Brands — We Launch Digital Universes
         </motion.p>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2 }}>
           <Button
             size="lg"
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 text-lg rounded-full group"
+            onClick={() => {
+              const element = document.getElementById("contact")
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
           >
-            Start Your Journey
+            Book a Call
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>

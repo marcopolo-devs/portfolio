@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronRight, Youtube, Linkedin, Instagram } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
+import { useEffect, useRef } from "react"
 
 interface SidebarProps {
   isOpen: boolean
@@ -19,6 +20,46 @@ const XIcon = () => (
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const router = useRouter()
   const pathname = usePathname()
+  const sidebarRef = useRef<HTMLDivElement>(null)
+
+  // Handle mouse movement to auto-close sidebar when mouse leaves
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Only auto-close on desktop (large screens)
+      if (window.innerWidth < 1024) return
+
+      const sidebarElement = sidebarRef.current
+      if (!sidebarElement) return
+
+      const sidebarRect = sidebarElement.getBoundingClientRect()
+      const mouseX = e.clientX
+      const mouseY = e.clientY
+
+      // Check if mouse is outside the sidebar area
+      const isOutsideSidebar =
+        mouseX > sidebarRect.right ||
+        mouseX < sidebarRect.left ||
+        mouseY > sidebarRect.bottom ||
+        mouseY < sidebarRect.top
+
+      // Close sidebar if mouse is outside and not near the left edge
+      if (isOutsideSidebar && mouseX > 50) {
+        onClose()
+      }
+    }
+
+    // Add event listener with a small delay to prevent immediate closing
+    const timeoutId = setTimeout(() => {
+      document.addEventListener("mousemove", handleMouseMove)
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      document.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [isOpen, onClose])
 
   const handleNavigation = (target: string, href: string) => {
     onClose() // Close sidebar first
@@ -65,17 +106,18 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop - Only visible on mobile */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-40"
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={onClose}
           />
 
           {/* Sidebar */}
           <motion.div
+            ref={sidebarRef}
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
