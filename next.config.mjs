@@ -12,7 +12,7 @@ const nextConfig = {
   },
 
   basePath: '/agency-portfolio',
-  assetPrefix: '/agency-portfolio',
+  assetPrefix: '/agency-portfolio/',
 }
 
 export default nextConfig
