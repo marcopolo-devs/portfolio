@@ -9,6 +9,7 @@ import AboutSection from "@/components/sections/about-section"
 import ServicesSection from "@/components/sections/services-section"
 import FeaturedWorkSection from "@/components/sections/featured-work-section"
 import ContactSection from "@/components/sections/contact-section"
+import Footer from "@/components/footer"
 
 // 3D Background Component
 function AnimatedSphere() {
@@ -73,16 +74,7 @@ export default function MarcoPoloDigital() {
       <ContactSection />
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-white/10">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 md:mb-0">
-              MarcoPolo Digital
-            </div>
-            <p className="text-gray-400">© {new Date().getFullYear()} MarcoPolo Digital. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   )
 }

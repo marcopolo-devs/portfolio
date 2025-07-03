@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Palette, Code, Smartphone, Globe, TrendingUp } from "lucide-react"
+import { Palette, Code, Smartphone, Globe, TrendingUp, LayoutDashboard, Image} from "lucide-react"
 
 export default function ServicesSection() {
   const services = [
@@ -22,7 +22,7 @@ export default function ServicesSection() {
       description: "Custom software solutions tailored to your business needs",
     },
     {
-      icon: Globe,
+      icon: Image,
       title: "Graphic Design",
       description: "Visual storytelling that captures attention and communicates value",
     },
@@ -30,6 +30,11 @@ export default function ServicesSection() {
       icon: TrendingUp,
       title: "Marketing Strategy",
       description: "Data-driven strategies that accelerate growth and engagement",
+    },
+    {
+      icon: LayoutDashboard,
+      title: "UI/UX",
+      description: "Crafting seamless user journeys and visually stunning interfaces",
     },
   ]
 

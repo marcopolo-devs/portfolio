@@ -9,68 +9,52 @@ import Sidebar from "@/components/sidebar"
 import { Play, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
+
+export const Projects = [
+   
+    // follow this model
+
+    // {   
+    //   title: "add title",
+    //   category: "add category",
+    //   image: "/workImages/iamge.jpg",  keep in pub/workImages folder
+    //   description: "add description",
+    // }
+    
+     {
+      title: "Directors' Guild",
+      category: "Website Development",
+      image: "/workImages/dg.jpg",
+      description: "The Bangladeshi Directors' Guild",
+    },
+    {
+      title: "Sodai",
+      category: "Software Development",
+      image: "/workImages/sodai.jpg",
+      description: "Get your groceries at your doorsteps",
+    },
+    {
+      title: "Planetary Health Academia",
+      category: "Marketing",
+      image: "/workImages/pha.jpg",
+      description: "A hub for groundbreaking research and education.",
+    },
+    {
+      title: "Keerti Creations",
+      category: "Website Development",
+      image: "/workImages/keerti.png",
+      description: "3D Visualization, Mixed Realities & Virtual Realities",
+    },
+  ]
+
 export default function WorksPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("All")
 
   const categories = ["All", "Branding", "Web Development", "Software Development", "Marketing", "UI/UX"]
 
-  const allProjects = [
-    {
-      title: "TechFlow Rebrand",
-      category: "Branding",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Complete brand transformation for a leading tech company",
-    },
-    {
-      title: "EcoVision Platform",
-      category: "Software Development",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Sustainable energy management platform",
-    },
-    {
-      title: "Luxe Fashion Campaign",
-      category: "Marketing",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Digital marketing campaign for luxury fashion brand",
-    },
-    {
-      title: "FinTech Mobile App",
-      category: "UI/UX",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "User-friendly mobile banking application",
-    },
-    {
-      title: "Restaurant Chain Website",
-      category: "Web Development",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Multi-location restaurant website with online ordering",
-    },
-    {
-      title: "Healthcare Dashboard",
-      category: "Software Development",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Patient management system for healthcare providers",
-    },
-    {
-      title: "Startup Brand Identity",
-      category: "Branding",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Complete brand identity for innovative startup",
-    },
-    {
-      title: "E-commerce Platform",
-      category: "Web Development",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Custom e-commerce solution with advanced features",
-    },
-    {
-      title: "Social Media Campaign",
-      category: "Marketing",
-      image: "/placeholder.svg?height=300&width=400",
-      description: "Viral social media campaign for product launch",
-    },
-  ]
+  const allProjects = Projects;
+
 
   const filteredProjects =
     selectedCategory === "All" ? allProjects : allProjects.filter((project) => project.category === selectedCategory)

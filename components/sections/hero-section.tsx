@@ -5,12 +5,29 @@ import { OrbitControls, Sphere, MeshDistortMaterial, Float, Environment } from "
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { useEffect, useState } from "react"
 
 // 3D Background Component
 function AnimatedSphere() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768)
+  }
+
+  checkMobile()
+  window.addEventListener("resize", checkMobile)
+
+  return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   return (
     <Float speed={1.4} rotationIntensity={1} floatIntensity={2}>
-      <Sphere args={[1, 100, 200]} scale={2.4}>
+      <Sphere
+        args={[1, 100, 200]}
+        scale={isMobile ? 1.5 : 2.5} // Smaller scale for mobile
+      >
         <MeshDistortMaterial color="#6366f1" attach="material" distort={0.3} speed={1.5} roughness={0.4} />
       </Sphere>
     </Float>
@@ -18,9 +35,26 @@ function AnimatedSphere() {
 }
 
 function ParticleField() {
+    
+const [isMobile, setIsMobile] = useState(false)
+
+useEffect(() => {
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768)
+  }
+
+  checkMobile()
+  window.addEventListener("resize", checkMobile)
+
+  return () => window.removeEventListener("resize", checkMobile)
+}, [])
+
+// Reduce particle count on mobile for better performance
+const particleCount = isMobile ? 20 : 50
+
   return (
     <>
-      {Array.from({ length: 50 }).map((_, i) => (
+      {Array.from({ length: particleCount }).map((_, i) => (
         <Float key={i} speed={0.5 + Math.random()} rotationIntensity={0.5} floatIntensity={1}>
           <Sphere
             args={[0.02, 8, 8]}
@@ -44,7 +78,7 @@ export default function HeroSection() {
           <AnimatedSphere />
           <ParticleField />
           <Environment preset="night" />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={10} />
         </Canvas>
       </div>
 

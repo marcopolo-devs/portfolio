@@ -6,30 +6,34 @@ import { Button } from "@/components/ui/button"
 import { Play, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Folder from "../ui/Folder"
+import { Projects } from "@/app/works/page"
+
 
 export default function FeaturedWorkSection() {
-  const featuredProjects = [
-    {
-      title: "TechFlow Rebrand",
-      category: "Branding & Web Design",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    {
-      title: "EcoVision Platform",
-      category: "Software Development",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    {
-      title: "Luxe Fashion Campaign",
-      category: "Marketing & Design",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    {
-      title: "FinTech Mobile App",
-      category: "UI/UX & Development",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-  ]
+  // const featuredProjects = [
+  //   {
+  //     title: "TechFlow Rebrand",
+  //     category: "Branding & Web Design",
+  //     image: "/placeholder.svg?height=300&width=400",
+  //   },
+  //   {
+  //     title: "EcoVision Platform",
+  //     category: "Software Development",
+  //     image: "/placeholder.svg?height=300&width=400",
+  //   },
+  //   {
+  //     title: "Luxe Fashion Campaign",
+  //     category: "Marketing & Design",
+  //     image: "/placeholder.svg?height=300&width=400",
+  //   },
+  //   {
+  //     title: "FinTech Mobile App",
+  //     category: "UI/UX & Development",
+  //     image: "/placeholder.svg?height=300&width=400",
+  //   },
+  // ]
+
+  const featuredProjects = Projects.slice(0,4)
 
   return (
     <section id="work" className="py-20 px-6">
