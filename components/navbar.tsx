@@ -115,21 +115,21 @@ export default function Navbar({ onMenuClick, isSidebarOpen }: NavbarProps) {
                 <div className="flex items-center space-x-8">
                   <button
                     onClick={() => handleNavigation("about")}
-                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform group"
+                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform group"
                   >
                     About
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 ease-out"></span>
                   </button>
                   <button
                     onClick={() => handleNavigation("services")}
-                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform group"
+                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform group"
                   >
                     Services
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 ease-out"></span>
                   </button>
                   <button
                     onClick={() => handleNavigation("work")}
-                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform transition-transform group"
+                    className="relative text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap hover:scale-105 transform group"
                   >
                     Work
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300 ease-out"></span>
