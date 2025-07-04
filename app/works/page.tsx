@@ -24,25 +24,25 @@ export const Projects = [
      {
       title: "Directors' Guild",
       category: "Website Development",
-      image: "/workImages/dg.jpg",
+      image: "./workImages/dg.jpg",
       description: "The Bangladeshi Directors' Guild",
     },
     {
       title: "Sodai",
       category: "Software Development",
-      image: "/workImages/sodai.jpg",
+      image: "./workImages/sodai.jpg",
       description: "Get your groceries at your doorsteps",
     },
     {
       title: "Planetary Health Academia",
       category: "Marketing",
-      image: "/workImages/pha.jpg",
+      image: "./workImages/pha.jpg",
       description: "A hub for groundbreaking research and education.",
     },
     {
       title: "Keerti Creations",
       category: "Website Development",
-      image: "/workImages/keerti.png",
+      image: "./workImages/keerti.png",
       description: "3D Visualization, Mixed Realities & Virtual Realities",
     },
   ]
