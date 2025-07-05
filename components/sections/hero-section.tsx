@@ -26,7 +26,7 @@ function AnimatedSphere() {
     <Float speed={1.4} rotationIntensity={1} floatIntensity={2}>
       <Sphere
         args={[1, 100, 200]}
-        scale={isMobile ? 1.5 : 2.5} // Smaller scale for mobile
+        scale={isMobile ? 1.4 : 2.5} // Smaller scale for mobile
       >
         <MeshDistortMaterial color="#6366f1" attach="material" distort={0.3} speed={1.5} roughness={0.4} />
       </Sphere>

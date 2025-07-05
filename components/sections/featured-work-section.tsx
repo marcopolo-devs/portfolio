@@ -55,32 +55,42 @@ export default function FeaturedWorkSection() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {featuredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="group cursor-pointer"
-            >
-              <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Play className="w-12 h-12 text-white" />
+
+            <Link
+                key={index}
+                href={project.url !== "" ? project.url : "/"}
+                target={project.url !== "" ? "_blank" : "_self"}
+                rel={project.url !== "" ? "noopener noreferrer" : undefined}
+                className="block"
+              >
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="group cursor-pointer"
+              >
+                <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 overflow-hidden">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Play className="w-12 h-12 text-white" />
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-2 text-white">{project.title}</h3>
-                  <p className="text-purple-400">{project.category}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-bold mb-2 text-white">{project.title}</h3>
+                    <p className="text-purple-400">{project.category}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+            </Link>
           ))}
         </div>
 

@@ -23,27 +23,31 @@ export const Projects = [
     
      {
       title: "Directors' Guild",
-      category: "Website Development",
+      category: "Web Development",
       image: "./workImages/dg.jpg",
       description: "The Bangladeshi Directors' Guild",
+      url : "",
     },
     {
       title: "Sodai",
       category: "Software Development",
       image: "./workImages/sodai.jpg",
       description: "Get your groceries at your doorsteps",
+      url : "https://www.sodai.xyz/",
     },
     {
       title: "Planetary Health Academia",
-      category: "Marketing",
+      category: "Web Development",
       image: "./workImages/pha.jpg",
       description: "A hub for groundbreaking research and education.",
+      url : "https://www.planetaryhealthacademia.org/",
     },
     {
       title: "Keerti Creations",
-      category: "Website Development",
+      category: "Web Development",
       image: "./workImages/keerti.png",
       description: "3D Visualization, Mixed Realities & Virtual Realities",
+      url : "https://www.keertistudios.com/",
     },
   ]
 
@@ -122,36 +126,46 @@ export default function WorksPage() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group cursor-pointer"
+
+              <Link
+                key={index}
+                href={project.url !== "" ? project.url : "/works"}
+                target={project.url !== "" ? "_blank" : "_self"}
+                rel={project.url !== "" ? "noopener noreferrer" : undefined}
+                className="block"
               >
-                <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 overflow-hidden">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Play className="w-12 h-12 text-white" />
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="group cursor-pointer"
+                >
+                  <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 overflow-hidden">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <Play className="w-12 h-12 text-white" />
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">
+                          {project.category}
+                        </span>
+                      </div>
                     </div>
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
-                    <p className="text-gray-300 text-sm">{project.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
+                      <p className="text-gray-300 text-sm">{project.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+              </Link>
             ))}
           </motion.div>
         </div>
@@ -159,3 +173,4 @@ export default function WorksPage() {
     </div>
   )
 }
+

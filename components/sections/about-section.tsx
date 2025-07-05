@@ -2,26 +2,32 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Compass, Lightbulb, Target } from "lucide-react"
+import { CheckCircle, Users, Trophy } from "lucide-react"
 
 export default function AboutSection() {
-  const pillars = [
-    {
-      icon: Compass,
-      title: "Strategy",
-      description: "Navigate complex digital landscapes with data-driven insights",
-    },
-    {
-      icon: Lightbulb,
-      title: "Creativity",
-      description: "Illuminate your brand with innovative design and storytelling",
-    },
-    {
-      icon: Target,
-      title: "Execution",
-      description: "Deliver precise, impactful solutions that drive results",
-    },
-  ]
+  // Separate variables for easy editing
+  const projectsData = {
+    number: "20+",
+    title: "Projects Delivered",
+    description: "Transforming ideas into digital reality",
+    icon: CheckCircle,
+  }
+
+  const clientsData = {
+    number: "10+",
+    title: "Clients Served",
+    description: "Trusted by businesses worldwide",
+    icon: Users,
+  }
+
+  const awardsData = {
+    number: "0",
+    title: "Awards Won",
+    description: "Honored for innovation & excellence",
+    icon: Trophy,
+  }
+
+  const achievements = [projectsData, clientsData, awardsData]
 
   return (
     <section id="about" className="py-20 px-6">
@@ -44,9 +50,9 @@ export default function AboutSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {pillars.map((pillar, index) => (
+          {achievements.map((achievement, index) => (
             <motion.div
-              key={pillar.title}
+              key={achievement.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -57,12 +63,13 @@ export default function AboutSection() {
               <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
                 <CardContent className="p-8 text-center">
                   <div className="mb-6 flex justify-center">
-                    <div className="p-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 group-hover:scale-110 transition-transform">
-                      <pillar.icon className="w-8 h-8 text-white" />
+                    <div className="p-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 w-fit group-hover:scale-110 transition-transform">
+                      <achievement.icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">{pillar.title}</h3>
-                  <p className="text-gray-300">{pillar.description}</p>
+                  <h3 className="text-4xl font-bold mb-2 text-white">{achievement.number}</h3>
+                  <h4 className="text-xl font-semibold mb-3 text-white">{achievement.title}</h4>
+                  <p className="text-gray-300">{achievement.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
