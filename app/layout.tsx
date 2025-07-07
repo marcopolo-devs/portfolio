@@ -3,8 +3,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'MarcoPolo Digital',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  description: 'MarcoPolo Digital',
+  generator: 'MarcoPolo',
 }
 
 export default function RootLayout({
