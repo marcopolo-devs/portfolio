@@ -118,27 +118,26 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6 text-white">Contact Us</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                  <MapPin className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-gray-400 leading-relaxed">
-                    House#72, Road#15, Sector#11, Uttara, Dhaka
-                  </p>
-                </div>
+                
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Phone className="w-4 h-4 text-white" />
                 </div>
-                <p className="text-gray-400">+880 1885 890605</p>
+                <a href="tel:+8801885890605" className="text-gray-400 hover:underline">
+                  +880 1885 890605
+                </a>
               </div>
+
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Mail className="w-4 h-4 text-white" />
                 </div>
-                <p className="text-gray-400">marcopolodigital@outlook.com</p>
+                <a href="mailto:hello@marcopolo-digital.com" className="text-gray-400 hover:underline">
+                  hello@marcopolo-digital.com
+                </a>
               </div>
+
             </div>
           </motion.div>
         </div>
