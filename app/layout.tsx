@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'MarcoPolo Digital',
   description: 'MarcoPolo Digital',
   generator: 'MarcoPolo',
+  openGraph: {
+    images: '/logo.jpg',
+  },
 }
 
 export default function RootLayout({
